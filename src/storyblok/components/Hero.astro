@@ -1,0 +1,11 @@
+---
+import { Hero } from '@components/Hero';
+import { renderRichText, storyblokEditable } from '@storyblok/astro';
+
+const { blok } = Astro.props;
+const description = renderRichText(blok.description);
+---
+
+<div {...storyblokEditable(blok)}>
+	<Hero {...blok} description={description} client:visible />
+</div>
