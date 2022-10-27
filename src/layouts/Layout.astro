@@ -10,16 +10,19 @@ const { title, locale } = Astro.props;
 
 const sbApi = useStoryblokApi();
 const { data: mainNavigationData } = await sbApi.get(
-	'cdn/stories/main-navigation',
+	'cdn/stories/configuration/main-navigation',
 	{
 		version: 'draft',
 	}
 );
 const { story: mainNavigation } = mainNavigationData as { story: any };
 
-const { data: configData } = await sbApi.get('cdn/stories/config', {
-	version: 'draft',
-});
+const { data: configData } = await sbApi.get(
+	'cdn/stories/configuration/config',
+	{
+		version: 'draft',
+	}
+);
 const {
 	story: { content: config },
 } = configData as { story: any };
